@@ -1,22 +1,22 @@
 package ru.dzmakats;
 
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import ru.dzmakats.entity.Customer;
-import ru.dzmakats.repository.ConnectionPool;
-import ru.dzmakats.repository.impl.CustomerRepo;
 import ru.dzmakats.service.CustomerService;
 
 /**
  * Created by Denis Zolotarev on 06.02.2024
  */
 public class App {
+    public static final String BASE_PACKAGE = "ru.dzmakats";
+
     public static void main(String[] args) {
 
-        CustomerService customerService = new CustomerService();
-        ConnectionPool pool = new ConnectionPool();
-        CustomerRepo customerRepo = new CustomerRepo(pool);
-        customerService.setCustomerRepo(customerRepo);
+        ApplicationContext context = new AnnotationConfigApplicationContext(BASE_PACKAGE);
 
         long id = 1L;
+        CustomerService customerService = context.getBean(CustomerService.class);
         Customer customer = customerService.get(id);
         System.out.println("Show customer with id = " + id + ":");
         System.out.println(customer);

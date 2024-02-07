@@ -2,6 +2,7 @@ package ru.dzmakats.repository;
 
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
+import org.springframework.stereotype.Component;
 
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -9,6 +10,8 @@ import java.sql.SQLException;
 /**
  * Created by Denis Zolotarev on 06.02.2024
  */
+
+@Component
 public class ConnectionPool {
 
     private final HikariDataSource ds;

@@ -1,6 +1,7 @@
 package ru.dzmakats.repository.impl;
 
 import lombok.SneakyThrows;
+import org.springframework.stereotype.Repository;
 import ru.dzmakats.entity.Customer;
 import ru.dzmakats.repository.ConnectionPool;
 import ru.dzmakats.repository.Repo;
@@ -13,6 +14,8 @@ import java.sql.ResultSet;
 /**
  * Created by Denis Zolotarev on 06.02.2024
  */
+
+@Repository
 public class CustomerRepo implements Repo<Customer> {
 
     private static final String GET_BY_ID = "SELECT id, login, password FROM users WHERE id=?";
