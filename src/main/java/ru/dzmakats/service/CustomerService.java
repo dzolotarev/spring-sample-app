@@ -1,6 +1,5 @@
 package ru.dzmakats.service;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ru.dzmakats.entity.Customer;
 import ru.dzmakats.repository.Repo;
@@ -12,10 +11,9 @@ import ru.dzmakats.repository.Repo;
 @Service
 public class CustomerService {
 
-    private Repo<Customer> customerRepo;
+    private final Repo<Customer> customerRepo;
 
-    @Autowired
-    public void setCustomerRepo(Repo<Customer> customerRepo) {
+    public CustomerService(Repo<Customer> customerRepo) {
         this.customerRepo = customerRepo;
     }
 
