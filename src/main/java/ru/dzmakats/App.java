@@ -2,6 +2,7 @@ package ru.dzmakats;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import ru.dzmakats.config.AppConfig;
 import ru.dzmakats.entity.Customer;
 import ru.dzmakats.service.CustomerService;
 
@@ -9,11 +10,10 @@ import ru.dzmakats.service.CustomerService;
  * Created by Denis Zolotarev on 06.02.2024
  */
 public class App {
-    public static final String BASE_PACKAGE = "ru.dzmakats";
 
     public static void main(String[] args) {
 
-        ApplicationContext context = new AnnotationConfigApplicationContext(BASE_PACKAGE);
+        ApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
 
         long id = 1L;
         CustomerService customerService = context.getBean(CustomerService.class);
