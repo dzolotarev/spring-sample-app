@@ -1,7 +1,10 @@
 package ru.dzmakats.service;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ru.dzmakats.entity.Customer;
+import ru.dzmakats.processor.Benchmark;
+import ru.dzmakats.processor.Tx;
 import ru.dzmakats.repository.Repo;
 
 import javax.annotation.PostConstruct;
@@ -12,14 +15,17 @@ import javax.annotation.PreDestroy;
  */
 
 @Service
+@Benchmark
 public class CustomerService {
 
-    private final Repo<Customer> customerRepo;
+    private Repo<Customer> customerRepo;
 
-    public CustomerService(Repo<Customer> customerRepo) {
+    @Autowired
+    public void setCustomerRepo(Repo<Customer> customerRepo) {
         this.customerRepo = customerRepo;
     }
 
+    @Tx
     public Customer get(Long id) {
         return customerRepo.getById(id);
     }
