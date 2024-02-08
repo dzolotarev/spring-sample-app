@@ -24,9 +24,7 @@ public class BenchmarkAnnotationBeanPostProcessor implements BeanPostProcessor {
 
     private boolean methodIsAnnotationPresent(Class<?> aClass) {
         return Arrays.stream(aClass.getMethods())
-                .filter(method -> method.isAnnotationPresent(Benchmark.class))
-                .findFirst()
-                .isPresent();
+                .anyMatch(method -> method.isAnnotationPresent(Benchmark.class));
     }
 
     @Override
