@@ -18,7 +18,7 @@ public class App {
             CustomerService customerService = context.getBean(CustomerService.class);
             Customer customer = customerService.get(id);
             System.out.println("Show customer with id = " + id + ":");
-            System.out.println(customer);
+            System.out.println(customerService.get(id));
 
             //save old password
             String oldPassword = customer.getPassword();
@@ -29,9 +29,8 @@ public class App {
             // update customer in repo
             customerService.update(customer);
 
-            customer = customerService.get(1L);
             System.out.println("Show updated customer id = " + id + ":");
-            System.out.println(customer);
+            System.out.println(customerService.get(id));
 
             // restore old password and save in repo
             customer.setPassword(oldPassword);
